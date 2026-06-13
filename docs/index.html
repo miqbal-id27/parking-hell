@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Parking Hell</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 880px;
+      margin: 40px auto;
+      padding: 0 20px;
+      line-height: 1.6;
+      background: #111;
+      color: #f5f5f5;
+    }
+    h1, h2 { color: #ffb347; }
+    code, pre {
+      background: #222;
+      color: #f5f5f5;
+      padding: 2px 6px;
+      border-radius: 6px;
+    }
+    pre { padding: 16px; overflow-x: auto; }
+    .card {
+      background: #1b1b1b;
+      border: 1px solid #333;
+      border-radius: 12px;
+      padding: 18px;
+      margin: 16px 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>🔥🅿️ Parking Hell 🅿️🔥</h1>
+  <p><strong>Hi Chat. Hell-p me. I.want.to.park.</strong></p>
+
+  <div class="card">
+    <p>
+      Parking Hell is a simple LLM-powered parking assistant that helps drivers find nearby parking options based on destination, vehicle type, walking distance, parking duration, and preference.
+    </p>
+  </div>
+
+  <h2>Background</h2>
+  <p>
+    This project was inspired by a funny but relatable frustration shared by @TimmyTubbyTV and @supercatkei: maps apps can guide users to a destination, but they do not really help users decide where to park.
+  </p>
+
+  <h2>Simple Flow</h2>
+  <pre>User destination
+      ↓
+Get latitude and longitude
+      ↓
+Find nearby parking
+      ↓
+Rank parking options
+      ↓
+Calculate Parking Hell Score
+      ↓
+Gemini gives recommendation</pre>
+
+  <h2>Features</h2>
+  <ul>
+    <li>Streamlit chatbot UI</li>
+    <li>Gemini API response generation</li>
+    <li>Nominatim geocoding</li>
+    <li>Overpass API parking search</li>
+    <li>Parking Hell Score</li>
+    <li>Simple prompt-injection guardrail</li>
+    <li>Light Singlish-style chatbot personality</li>
+  </ul>
+
+  <h2>How to Run</h2>
+  <pre>pip install -r requirements.txt
+streamlit run app.py</pre>
+
+  <h2>Demo Input</h2>
+  <pre>ION Orchard</pre>
+</body>
+</html>
