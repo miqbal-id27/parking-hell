@@ -56,7 +56,7 @@ with st.sidebar:
 
     radius = st.slider(
         "Willing walk how far ah?",
-        300, 2000, 800, 100
+        300, 3000, 1500, 100
     )
 
 
@@ -99,17 +99,17 @@ def geocode_place(place_name):
     }
 
 
-def find_parking(lat, lon, radius=800):
-    """Find nearby parking places using Overpass API and OpenStreetMap tags."""
+def find_parking(lat, lon, radius=1200):
     query = f"""
     [out:json][timeout:25];
     (
-      node["amenity"="parking"](around:{radius},{lat},{lon});
-      way["amenity"="parking"](around:{radius},{lat},{lon});
-      relation["amenity"="parking"](around:{radius},{lat},{lon});
-      node["amenity"="parking_space"](around:{radius},{lat},{lon});
-      node["amenity"="motorcycle_parking"](around:{radius},{lat},{lon});
-      node["amenity"="bicycle_parking"](around:{radius},{lat},{lon});
+      node["amenity"~"parking|parking_space|parking_entrance|motorcycle_parking|bicycle_parking"](around:{radius},{lat},{lon});
+      way["amenity"~"parking|parking_space|parking_entrance|motorcycle_parking|bicycle_parking"](around:{radius},{lat},{lon});
+      relation["amenity"~"parking|parking_space|parking_entrance|motorcycle_parking|bicycle_parking"](around:{radius},{lat},{lon});
+
+      node["parking"](around:{radius},{lat},{lon});
+      way["parking"](around:{radius},{lat},{lon});
+      relation["parking"](around:{radius},{lat},{lon});
     );
     out center tags;
     """
