@@ -98,7 +98,47 @@ def geocode_place(place_name):
         "lon": float(data[0]["lon"])
     }
 
+def demo_parking_database(destination):
+    destination = destination.lower()
 
+    ion_orchard_data = [
+        {
+            "name": "ION Orchard Car Park",
+            "type": "shopping mall car park",
+            "fee": "paid",
+            "access": "public",
+            "opening_hours": "daily",
+            "lat": 1.3040,
+            "lon": 103.8325,
+            "distance_m": 80
+        },
+        {
+            "name": "Wisma Atria Car Park",
+            "type": "shopping mall car park",
+            "fee": "paid",
+            "access": "public",
+            "opening_hours": "daily",
+            "lat": 1.3038,
+            "lon": 103.8334,
+            "distance_m": 180
+        },
+        {
+            "name": "Ngee Ann City Car Park",
+            "type": "shopping mall car park",
+            "fee": "paid",
+            "access": "public",
+            "opening_hours": "daily",
+            "lat": 1.3025,
+            "lon": 103.8347,
+            "distance_m": 350
+        }
+    ]
+
+    if "ion orchard" in destination or "orchard" in destination:
+        return pd.DataFrame(ion_orchard_data)
+
+    return pd.DataFrame()
+    
 def find_parking(lat, lon, radius=1200):
     query = f"""
     [out:json][timeout:25];
@@ -315,6 +355,10 @@ if user_input:
                     st.success(f"📍 Destination Found: {place['name']}")
 
                     parking_df = find_parking(place["lat"], place["lon"], radius)
+                    if parking_df.empty:
+                        st.info("OpenStreetMap parking data not found. Using demo parking database lah.")
+                        parking_df = demo_parking_database(place["name"])
+                        
                     ranked_df = rank_parking(parking_df, priority)
 
                     if ranked_df.empty:
