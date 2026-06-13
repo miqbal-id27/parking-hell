@@ -1,4 +1,4 @@
-# Parking Hell - LLM-powered Parking Lot Assitant
+# Parking Hell : LLM-powered Parking Finder Assitant
 
 <br>
 <p aling="center">
