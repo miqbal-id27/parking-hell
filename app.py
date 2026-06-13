@@ -287,7 +287,7 @@ for msg in st.session_state.messages:
 # -----------------------------
 # Chat Input
 # -----------------------------
-user_input = st.chat_input("Where do you want to go? Example: I want to go to ION Orchard")
+user_input = st.chat_input("Where do you want to go? Example: ION Orchard")
 
 if user_input:
     st.session_state.messages.append({"role": "user", "content": user_input})
